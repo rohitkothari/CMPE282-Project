@@ -1,0 +1,9 @@
+CREATE SCHEMA `cmpe282` ;
+
+CREATE TABLE `cmpe282`.`user` (
+  `username` VARCHAR(20) NOT NULL,
+  `password` VARCHAR(20) NOT NULL,
+  PRIMARY KEY (`username`));
+
+INSERT INTO `cmpe282`.`user` (`username`, `password`) VALUES ('rk@gmail.com', '123456');
+
