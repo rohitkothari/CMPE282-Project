@@ -7,3 +7,15 @@ CREATE TABLE `cmpe282`.`user` (
 
 INSERT INTO `cmpe282`.`user` (`username`, `password`) VALUES ('rk@gmail.com', '123456');
 
+ALTER TABLE `cmpe282`.`user` 
+ADD COLUMN `firstname` VARCHAR(20) NOT NULL AFTER `password`,
+ADD COLUMN `lastname` VARCHAR(20) NOT NULL AFTER `firstname`,
+ADD COLUMN `address` VARCHAR(45) NULL AFTER `lastname`,
+ADD COLUMN `pin` INT NULL AFTER `address`,
+ADD COLUMN `mobile` INT NULL AFTER `pin`;
+
+ALTER TABLE `cmpe282`.`user` 
+CHANGE COLUMN `username` `username` VARCHAR(40) NOT NULL ;
+
+ALTER TABLE `cmpe282`.`user` 
+CHANGE COLUMN `mobile` `mobile` BIGINT NULL ;

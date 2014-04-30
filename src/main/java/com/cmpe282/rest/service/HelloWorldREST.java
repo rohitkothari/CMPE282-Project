@@ -10,6 +10,8 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 
 import com.cmpe282.rest.dao.DbConnection;
+import com.cmpe282.rest.domain.User;
+//HelloWorldREST.java
 
 @Path("/helloWorldREST")
 public class HelloWorldREST {
@@ -36,6 +38,41 @@ public class HelloWorldREST {
 			output = "Login Successful for "+ email;
 				
 			System.out.println("Controller message: User was successfully validated in db");
+			return Response.status(200).entity(output).build();
+			}
+			else{
+				return Response.status(400).entity(output).build();	
+			}
+			
+
+	}
+	
+	@POST 
+	@Path("/signup")
+	public Response signup(@FormParam("firstName") String firstName, 
+			@FormParam("lastName") String lastName, 
+			@FormParam("email") String username,
+			@FormParam("password") String password,
+			@FormParam("address") String address,
+			@FormParam("pin") int pin,
+			@FormParam("mobile") int mobile) {
+			String output = "";
+			System.out.println("Username is: "+username);
+			User user = new User();
+			user.setFirstName(firstName);
+			user.setLastName(lastName);
+			user.setUsername(username);
+			user.setAddress(address);
+			user.setPasswd(password);
+			user.setMobile(mobile);
+			user.setPin(pin);
+			
+			DbConnection dbcon = new DbConnection();
+			if(dbcon.signup(user))
+			{
+			output = "User " + username + " added successfully to system";
+				
+			System.out.println("Controller message: User was successfully added to db");
 			
 			}
 			return Response.status(200).entity(output).build();
