@@ -18,7 +18,7 @@ public boolean loginCheck(String username, String password){
     try {
         Class.forName("com.mysql.jdbc.Driver").newInstance();
         //Using AWS RDS instance of Rohit
-        Connection con = DriverManager.getConnection("jdbc:mysql://cmpe282.cezm78dqy1fn.us-west-1.rds.amazonaws.com:3306/cmpe282", "clouduser", "clouduser");
+        Connection con = DriverManager.getConnection("");
         Statement stmt = (Statement) con.createStatement();
         query = "SELECT username, password FROM user WHERE username='" + username + "' AND password='" + password + "';";
         stmt.executeQuery(query);
@@ -46,7 +46,7 @@ public boolean signup(User user)	{
     try {
     	Class.forName("com.mysql.jdbc.Driver").newInstance();
     	//Using AWS RDS instance of Rohit
-    	Connection con = DriverManager.getConnection("jdbc:mysql://cmpe282.cezm78dqy1fn.us-west-1.rds.amazonaws.com:3306/cmpe282", "clouduser", "clouduser");
+    	Connection con = DriverManager.getConnection("");
     	PreparedStatement ps = con.prepareStatement(query);
     	ps.setString(1, user.getUsername());
     	ps.setString(2, user.getPasswd());
