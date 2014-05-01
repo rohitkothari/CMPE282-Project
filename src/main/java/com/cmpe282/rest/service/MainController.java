@@ -14,7 +14,7 @@ import com.cmpe282.rest.domain.User;
 //HelloWorldREST.java
 
 @Path("/MainController")
-public class HelloWorldREST {
+public class MainController {
 
 	@GET
 	@Path("/{parameter}")

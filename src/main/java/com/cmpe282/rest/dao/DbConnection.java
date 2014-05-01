@@ -18,12 +18,16 @@ public boolean loginCheck(String username, String password){
     try {
         Class.forName("com.mysql.jdbc.Driver").newInstance();
         //Using AWS RDS instance of Rohit
-        Connection con = DriverManager.getConnection("");
+        Connection con = DriverManager.getConnection("jdbc:mysql://cmpe282.cezm78dqy1fn.us-west-1.rds.amazonaws.com:3306/cmpe282", "clouduser", "clouduser");
         Statement stmt = (Statement) con.createStatement();
         query = "SELECT username, password FROM user WHERE username='" + username + "' AND password='" + password + "';";
         stmt.executeQuery(query);
         ResultSet rs = stmt.getResultSet();
-        login = rs.first(); 
+        login = rs.first();
+        
+        rs.close();
+        stmt.close();
+        con.close();
     } catch (InstantiationException e) {
         e.printStackTrace();
     } catch (IllegalAccessException e) {
@@ -36,7 +40,8 @@ public boolean loginCheck(String username, String password){
     return login;
 }
 
-public boolean signup(User user)	{
+public boolean signup(User user) {
+	// TODO Auto-generated method stub
 	boolean signup = false;
 	String query = "Insert into user"
 			+ "(username, password, firstname, lastname, address, pin, mobile) values"
@@ -60,6 +65,8 @@ public boolean signup(User user)	{
     	signup = true;
     	System.out.println("User successfully inserted into db");
     	
+        ps.close();
+        con.close();
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -78,5 +85,44 @@ public boolean signup(User user)	{
     
 	
 	return signup;
+}
+
+public User showUserProfile(String username){
+    String query;
+    User user = new User();
+
+    try {
+        Class.forName("com.mysql.jdbc.Driver").newInstance();
+        //Using AWS RDS instance of Rohit
+        Connection con = DriverManager.getConnection("");
+        Statement stmt = (Statement) con.createStatement();
+        query = "SELECT * FROM user WHERE username='" + username + "';";
+        stmt.executeQuery(query);
+        ResultSet rs = stmt.getResultSet();
+        while(rs.next()){
+            //Retrieve by column name
+        	user.setUsername(username);
+        	user.setFirstName(rs.getString("firstname"));
+        	user.setLastName(rs.getString("lastname"));
+        	user.setAddress(rs.getString("address"));
+        	user.setPin(rs.getInt("pin"));
+        	user.setMobile(rs.getInt("mobile"));           
+         }
+        
+        rs.close();
+        stmt.close();
+        con.close();
+        
+        
+    } catch (InstantiationException e) {
+        e.printStackTrace();
+    } catch (IllegalAccessException e) {
+        e.printStackTrace();
+    } catch (ClassNotFoundException e) {
+        e.printStackTrace();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return user;
 }
 }

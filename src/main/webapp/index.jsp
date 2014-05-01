@@ -39,7 +39,7 @@ function userLogin(){
 	 alert('Username : '+email);
 	   
 		$.ajax({
-			url : "rest/helloWorldREST/login",
+			url : "rest/MainController/login",
 		    type: "POST",
 		    data : "email=" + email + "&password=" + password,
 		   

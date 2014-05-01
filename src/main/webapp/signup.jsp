@@ -45,7 +45,7 @@ $(document).ready(function () {
 	   var mobile = $('#mobileInput').val();
 	   
 		$.ajax({
-			url : "rest/helloWorldREST/signup",
+			url : "rest/MainController/signup",
 		    type: "POST",
 		    data : "firstName=" + fname + "&lastName=" + lname + "&email=" + email + "&password=" + password + "&address=" + address + "&pin=" + pin + "&mobile=" + mobile,
 		    success:function(data, textStatus, jqXHR){
