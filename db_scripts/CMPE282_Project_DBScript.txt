@@ -19,3 +19,56 @@ CHANGE COLUMN `username` `username` VARCHAR(40) NOT NULL ;
 
 ALTER TABLE `cmpe282`.`user` 
 CHANGE COLUMN `mobile` `mobile` BIGINT NULL ;
+
+Questions Table
+----------------
+
+CREATE TABLE `cmpe282`.`questions` (
+  `questionsid` INT NULL,
+  `question` LONGTEXT NOT NULL,
+  `option1` VARCHAR(45) NULL,
+  `option2` VARCHAR(45) NULL,
+  `option3` VARCHAR(45) NULL,
+  `option4` VARCHAR(45) NULL,
+  PRIMARY KEY (`questionsid`))
+COMMENT = 'Consists of all questions regarding survey';
+
+Survey Table
+--------------
+
+CREATE TABLE `cmpe282`.`survey` (
+  `username` VARCHAR(40) NOT NULL,
+  `answer1` VARCHAR(45) NULL,
+  `answer2` VARCHAR(45) NULL,
+  `answer3` VARCHAR(45) NULL,
+  `answer4` VARCHAR(45) NULL,
+  `answer5` VARCHAR(45) NULL,
+  `answer6` VARCHAR(45) NULL,
+  `answer7` VARCHAR(45) NULL,
+  `answer8` VARCHAR(45) NULL,
+  `answer9` VARCHAR(45) NULL,
+  `answer10` VARCHAR(45) NULL,
+  INDEX `username_idx` (`username` ASC),
+  CONSTRAINT `username`
+    FOREIGN KEY (`username`)
+    REFERENCES `cmpe282`.`user` (`username`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+COMMENT = 'Stores user survey';
+
+Recommendation Table 1
+-----------------------
+
+CREATE TABLE `cmpe282`.`recoone` (
+  `user` VARCHAR(40) NOT NULL,
+  `reco` LONGTEXT NULL,
+  INDEX `username_idx` (`user` ASC),
+  CONSTRAINT `user`
+    FOREIGN KEY (`user`)
+    REFERENCES `cmpe282`.`user` (`username`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+COMMENT = 'stores user recommendation one';
+
+
+
