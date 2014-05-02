@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=US-ASCII" pageEncoding="US-ASCII"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -29,28 +28,34 @@
 					<div class="span8">
 						<table>
 							<tr>
+								<td><h5>Username</h5></td>
+								<td></td>
+								<td><span style="margin-left: 10px;">${user.username}</span></td>
+							</tr>
+							<tr></tr>
+							<tr>
 								<td><h5>First Name</h5></td>
 								<td></td>
-								<td><span style="margin-left: 10px;">${user.firstName}</span></td>
+								<td><span style="margin-left: 10px;">${user.firstname}</span></td>
 							</tr>
 							<tr></tr>
 							<tr>
 								<td><h5>Last Name</h5></td>
 								<td></td>
-								<td><span style="margin-left: 10px;">${user.lastName}</span></td>
+								<td><span style="margin-left: 10px;">${user.lastname}</span></td>
 							</tr>
 							<tr></tr>
-							<tr>
-								<td><h5>Email</h5></td>
-								<td></td>
-								<td><span style="margin-left: 10px;">${user.email}</span></td>
-							</tr>
-
-							<tr></tr>							
+														
 							<tr>
 								<td><h5>Address</h5></td>
 								<td></td>
 								<td><span style="margin-left: 10px;">${user.address}</span></td>
+							</tr>
+							<tr></tr>
+							<tr>
+								<td><h5>Pin</h5></td>
+								<td></td>
+								<td><span style="margin-left: 10px;">${user.pin}</span></td>
 							</tr>
 							<tr></tr>
 							<tr>
@@ -59,12 +64,7 @@
 								<td><span style="margin-left: 10px;">${user.mobile}</span></td>
 							</tr>
 							<tr></tr>
-							<tr>
-								<td><h5>Last Login</h5></td>
-								<td></td>
-								<td><span style="margin-left: 10px;">${user.lastLogin}</span></td>
-							</tr>
-							<tr></tr>
+							
 							<tr>
 								<td></td>
 								<td></td>
@@ -74,6 +74,10 @@
 					</div>
 					</div>
 			<% } %>
+			</div>
+			</div>
+			</div>
+			</div>
 	<%@include file="footer.jsp"%>
 			
 </body>
