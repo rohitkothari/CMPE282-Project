@@ -19,9 +19,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-
-
-
 import com.cmpe282.rest.dao.DbConnection;
 import com.cmpe282.rest.domain.User;
 import com.sun.jersey.api.view.Viewable;
@@ -129,10 +126,18 @@ public class MainController {
 	        
 	       
 			
-	        return Response.ok(new Viewable("/jsp/Profile", map)).build();
+	        return Response.ok(new Viewable("/jsp/NewProfile", map)).build();
 	        
 	        
 	    }
+		
+		@GET
+		@Path("/logout")
+		public Response logout(@Context HttpServletRequest req) {
+			HttpSession session= req.getSession(false);
+			session.invalidate();
+			return Response.ok(new Viewable("./home")).build();
+		}
 	
 /*	@GET 
 	@Path("/user/profile")
