@@ -10,6 +10,7 @@
 <body>
 <%@include file="header.jsp"%>
 <p>Please complete the following Questionnaire</p>
+
 <%@include file="footer.jsp"%>
 </body>
 </html>

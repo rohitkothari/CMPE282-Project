@@ -9,24 +9,28 @@
 <title>Health Recommendation</title>
 <%@include file="includes.jsp"%>
 </head>
-<body>
+<body style="background-color: grey;">
 <%@include file="header.jsp"%>
 
 
 		<%
 			if (session.getAttribute("username") != null) {
 		%>
-<p>We provide recommendations regarding Diabetes based on your answers for our questionnaire. </p>
+<p style=" color: black">We provide recommendations regarding Diabetes based on your answers for our questionnaire. </p>
 	Helloo <c:out value='${sessionScope.username}'/>
-<p> Please click on the link to navigate </p>
+<p style=" color: black"> Please click on the link to navigate </p>
 
-<a href="Profile.jsp" style="color: black;">My Profile</a> 
-<a href="survey.jsp" style="color: black;">Survey</a> 
 <form action="rest/MainController/user/profile" method="GET">
         <input type="submit" value="Retrive" />
     </form>
+<form action ="rest/MainController/user/profile" method= "GET">
+<input type = "Submit" Value = "Profile"/>
+</form>    
 		<%
 			} 
 		%>
+<%@include file="footer.jsp" %>
+
+		
 </body>
 </html>

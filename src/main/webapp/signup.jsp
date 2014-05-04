@@ -61,7 +61,7 @@ $(document).ready(function () {
 });
 
 </script>
-
+<%@include file="header.jsp"%>
 </head>
 <body>
 	
@@ -159,6 +159,7 @@ $(document).ready(function () {
 			</div>
 		</div>
 	
+<%@include file="footer.jsp" %>
 
 
 </body>
