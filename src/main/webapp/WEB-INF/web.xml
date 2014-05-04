@@ -5,7 +5,8 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
   
-  <servlet>
+ 
+    <servlet>
 		<servlet-name>jersey-hi-serlvet</servlet-name>
 		<servlet-class>
                      com.sun.jersey.spi.container.servlet.ServletContainer
@@ -14,12 +15,49 @@
 		     <param-name>com.sun.jersey.config.property.packages</param-name>
 		     <param-value>com.cmpe282.rest.service</param-value>
 		</init-param>
+		<init-param>
+	           <param-name>com.sun.jersey.config.property.JSPTemplatesBasePath</param-name>
+	           <param-value>/WEB-INF/</param-value>
+	        </init-param>
+	       <!--  <init-param>
+	           
+	           <param-name>com.sun.jersey.config.property.WebPageContentRegex</param-name>
+	           <param-value>(/(image|js|css)/?.*)|(/WEB-INF/.*\.jsp)|(/.*\.jsp)|(/WEB-INF/.*\.jspf)|(/WEB-INF/.*\.html)|(/favicon\.ico)|(/robots\.txt)</param-value>
+	         </init-param> -->
+	         
+	          <init-param>
+            <param-name>com.sun.jersey.config.feature.Redirect</param-name>
+            <param-value>true</param-value>
+        </init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>jersey-hi-serlvet</servlet-name>
 		<url-pattern>/rest/*</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping> 
+	
+	
+	    <!-- <filter>
+	      <filter-name>jersey</filter-name>
+	      <filter-class>com.sun.jersey.spi.container.servlet.ServletContainer</filter-class>
+	      <init-param>
+		     <param-name>com.sun.jersey.config.property.packages</param-name>
+		     <param-value>com.cmpe282.rest.service</param-value>
+		</init-param>
+	        <init-param>
+	           <param-name>com.sun.jersey.config.property.JSPTemplatesBasePath</param-name>
+	           <param-value>/WEB-INF</param-value>
+	        </init-param>
+	        <init-param>
+	           <param-name>com.sun.jersey.config.property.WebPageContentRegex</param-name>
+	           <param-value>(/(image|js|css)/?.*)|(/.*\.jsp)|(/WEB-INF/.*\.jsp)|(/WEB-INF/.*\.jspf)|(/.*\.html)|(/favicon\.ico)|(/robots\.txt)</param-value>
+	         </init-param>
+	     </filter>
+
+	     <filter-mapping>
+	        <filter-name>jersey</filter-name>
+	        <url-pattern>/rest/*</url-pattern>
+	     </filter-mapping>  -->
   
 </web-app>

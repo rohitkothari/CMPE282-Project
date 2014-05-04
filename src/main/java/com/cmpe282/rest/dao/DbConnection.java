@@ -6,8 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.cmpe282.rest.domain.Question;
 import com.cmpe282.rest.domain.User;
+
+
 
 public class DbConnection {
 	
@@ -37,6 +42,7 @@ public boolean loginCheck(String username, String password){
     } catch (SQLException e) {
         e.printStackTrace();
     }
+    
     return login;
 }
 
@@ -124,5 +130,52 @@ public User showUserProfile(String username){
         e.printStackTrace();
     }
     return user;
+}
+
+public List<Question> showQuestions(){
+    String query;
+    Question question = new Question();
+    List<Question> questions = new ArrayList<Question>();
+    try {
+        Class.forName("com.mysql.jdbc.Driver").newInstance();
+        //Using AWS RDS instance of Rohit
+        Connection con = DriverManager.getConnection("");
+        Statement stmt = (Statement) con.createStatement();
+        query = "SELECT * FROM questions";
+        stmt.executeQuery(query);
+        ResultSet rs = stmt.getResultSet();
+        while(rs.next()){
+            //Retrieve by column name
+        	question.setQuestionsId(rs.getInt("questionsid"));
+        	System.out.println(rs.getInt("questionsid"));
+        	question.setQuestion(rs.getString("question"));
+        	System.out.println(rs.getString("question"));
+        	question.setOption1(rs.getString("option1"));
+        	//System.out.println();
+        	question.setOption2(rs.getString("option2"));
+        	//System.out.println();
+        	question.setOption3(rs.getString("option3"));
+        	//System.out.println();
+        	question.setOption4(rs.getString("option4"));
+//        	System.out.println();
+        	
+        	questions.add(question);
+         }
+        
+        rs.close();
+        stmt.close();
+        con.close();
+        
+        
+    } catch (InstantiationException e) {
+        e.printStackTrace();
+    } catch (IllegalAccessException e) {
+        e.printStackTrace();
+    } catch (ClassNotFoundException e) {
+        e.printStackTrace();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return questions;
 }
 }

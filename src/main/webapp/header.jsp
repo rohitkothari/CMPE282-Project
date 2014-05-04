@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=US-ASCII" pageEncoding="US-ASCII"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page isELIgnored="false" %>
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
@@ -28,7 +30,7 @@
 				<li><a href="/project-vars/viewProjects.htm" style="color: white;"><h1>View Projects</h1></a></li>
 			</ul>
 			<% } %>
-			<% if(session.getAttribute("user") == null) { %>
+			<% if(session.getAttribute("username") == null) { %>
 			<ul id="loginMenu" class="nav" style=" float:right;">
 				<li><a href="login.jsp" style="color: white;">Login</a></li>
 				<li><a href="signup.jsp" style="color: white;">Sign Up</a></li>
@@ -41,7 +43,7 @@
 					    	<a class="dropdown-toggle" data-toggle="dropdown" href="#loggedInDown" style="color: white;">Hello ${user.firstName} <span class="caret"></span></a>
 					    </c:when>
 	 					<c:otherwise> --%>
-	 						<a class="dropdown-toggle" data-toggle="dropdown" href="#loggedInDown" style="color: white;">Hello ${user.firstName} <span class="caret"></span></a>
+	 						<a class="dropdown-toggle" data-toggle="dropdown" href="#loggedInDown" style="color: white;">Hello ${username} <span class="caret"></span></a>
 	 					<%--  </c:otherwise> 
  					</c:choose> --%>
 					

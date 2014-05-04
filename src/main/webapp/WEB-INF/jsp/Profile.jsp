@@ -9,10 +9,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>My Profile</title>
 
-<%@include file="includes.jsp"%>
+<%@include file="/includes.jsp"%>
 </head>
 <body>
-<%@include file="header.jsp"%>
+<%@include file="/header.jsp"%>
 
 
 
@@ -35,7 +35,7 @@
 
 	<div id="container" style="padding-top: 40px">
 	
-	<% if(session.getAttribute("user") == null) { %>
+	<% if(session.getAttribute("username") == null) { %>
 		<div class="container-fluid">
 			<div class="row-fluid"><p>Please <a href="login.htm">login</a> to view this page.</p></div>
 			 IValue: [<c:out value="${obj}"></c:out>]
@@ -51,42 +51,42 @@
 
 					<div class="span8">
 						<table>
-						<c:forEach var="item" items="${it.items}">
+						
 							<tr>
-								<td><h5>Username</h5></td>
-								<%-- <td> EValue: [<c:out value="${obj}"></c:out>]</td> --%>
-								<td><span style="margin-left: 10px;"> ${item}</span></td>
+								<td><h5>Username:</h5></td>
+								<td></td>
+								<td><span style="margin-left: 10px;"> <c:out value="${it.user}"></c:out></span></td>
 							</tr>
 							<tr></tr>
 							<tr>
-								<td><h5>First Name</h5></td>
+								<td><h5>First Name:</h5></td>
 								<td></td>
-								<td><span style="margin-left: 10px;"> ${item}</span></td>
+								<td><span style="margin-left: 10px;"> <c:out value="${it.firstname}"></c:out></span></td>
 							</tr>
 							<tr></tr>
 							<tr>
-								<td><h5>Last Name</h5></td>
+								<td><h5>Last Name:</h5></td>
 								<td></td>
-								<td><span style="margin-left: 10px;"> ${item}</span></td>
+								<td><span style="margin-left: 10px;"> <c:out value="${it.lastname}"></c:out></span></td>
 							</tr>
 							<tr></tr>
 														
 							<tr>
-								<td><h5>Address</h5></td>
+								<td><h5>Address:</h5></td>
 								<td></td>
-								<td><span style="margin-left: 10px;"> ${item}</span></td>
+								<td><span style="margin-left: 10px;"> <c:out value="${it.address}"></c:out></span></td>
 							</tr>
 							<tr></tr>
 							<tr>
-								<td><h5>Pin</h5></td>
+								<td><h5>Pin:</h5></td>
 								<td></td>
-								<td><span style="margin-left: 10px;">${user.pin}</span></td>
+								<td><span style="margin-left: 10px;"><c:out value="${it.pin}"></c:out></span></td>
 							</tr>
 							<tr></tr>
 							<tr>
-								<td><h5>Mobile</h5></td>
+								<td><h5>Mobile:</h5></td>
 								<td></td>
-								<td><span style="margin-left: 10px;">${user.mobile}</span></td>
+								<td><span style="margin-left: 10px;"><c:out value="${it.mobile}"></c:out></span></td>
 							</tr>
 							<tr></tr>
 							
@@ -95,7 +95,7 @@
 								<td></td>
 								<td></td>
 							</tr>
-							 </c:forEach>
+							
 						</table>
 					</div>
 					</div>
@@ -104,7 +104,7 @@
 			</div>
 			</div>
 			</div>
-	<%@include file="footer.jsp"%>
+	<%@include file="/footer.jsp"%>
 			
 </body>
 </html>
