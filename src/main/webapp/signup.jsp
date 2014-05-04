@@ -63,7 +63,7 @@ $(document).ready(function () {
 </script>
 <%@include file="header.jsp"%>
 </head>
-<body>
+<body bgcolor = "PowderBlue">
 	
 	<div id="container" align="center" style="padding-top: 40px;">
 		<div class="container-fluid">
