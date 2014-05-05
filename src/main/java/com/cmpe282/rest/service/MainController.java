@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -19,8 +20,12 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.cmpe282.rest.dao.Config;
 import com.cmpe282.rest.dao.DbConnection;
 import com.cmpe282.rest.domain.Reco;
+import com.cmpe282.rest.domain.Recos;
+import com.cmpe282.rest.domain.Recot;
+import com.cmpe282.rest.domain.Recou;
 import com.cmpe282.rest.domain.User;
 import com.cmpe282.rest.domain.UserAnswer;
 import com.sun.jersey.api.view.Viewable;
@@ -28,7 +33,9 @@ import com.sun.jersey.api.view.Viewable;
 
 @Path("/MainController")
 public class MainController {
-
+	
+	
+	
 	@GET
 	@Path("/{parameter}")
 	public Response responseMsg( @PathParam("parameter") String parameter,
@@ -46,6 +53,7 @@ public class MainController {
 			@Context HttpServletRequest req) {
 			String output = "";
 			System.out.println("Username is: "+email);
+			
 			DbConnection dbcon = new DbConnection();
 			if(dbcon.loginCheck(email, password))
 			{
@@ -61,6 +69,8 @@ public class MainController {
 				
 				session.setAttribute("sessionId", session.getId());
 				output = "Login Successful for "+ email;
+				
+				
 				
 				System.out.println("Controller message: User was successfully validated in db");
 				return Response.status(200).entity(output).build();
@@ -100,7 +110,11 @@ public class MainController {
 			HttpSession session= req.getSession(true);
 			session.setAttribute("username", username);
 			session.setAttribute("sessionId", session.getId());
-			
+			session.setAttribute("firstname", user.getFirstName());
+			session.setAttribute("lastname", user.getLastName());
+			session.setAttribute("address", user.getAddress());
+			session.setAttribute("pin", user.getPin());
+			session.setAttribute("mobile", user.getMobile());
 			System.out.println("Controller message: User was successfully added to db");
 			
 			}
@@ -151,6 +165,7 @@ public class MainController {
 				System.out.println("Checking username got from session- " +username);
 				Map<String, Object> map = new HashMap<String, Object>();
 		        System.out.println("Inside Controller - user/reco trial");
+		        
 		        map.put("reco", reco.getReco());
 		        		       		        
 		        return Response.ok(new Viewable("/jsp/NewProfile", map)).build();	        
@@ -178,25 +193,86 @@ public class MainController {
 				for(int i=0;i<10;i++){
 					System.out.println("part " +i+ " - " +parts[i]);	
 				}
-				answers.setAnswer1(parts[0]);
-				answers.setAnswer2(parts[1]);
-				answers.setAnswer3(parts[2]);
-				answers.setAnswer4(parts[3]);
-				answers.setAnswer5(parts[4]);
-				answers.setAnswer6(parts[5]);
-				answers.setAnswer7(parts[6]);
-				answers.setAnswer8(parts[7]);
-				answers.setAnswer9(parts[8]);
-				answers.setAnswer10(parts[9]);
-				
+				answers.setAnswer1(parts[0]); // age range 1­14 15­24 25­44 45­64 65+
+				answers.setAnswer2(parts[1]); // White Black Hispanic Other
+				answers.setAnswer3(parts[2]); // county 
+				answers.setAnswer4(parts[3]); // Income Less than $ 30k/annum Between $30k/annum ­ $50k/annum Between $50k/annum ­ $80k/annum More than $ 80k/annum 
+				answers.setAnswer5(parts[4]); // Weight Less than 60 kg Between 60kg ­ 80kg Between 80kg ­ 100kg More than 100kg 
+				answers.setAnswer6(parts[5]); // passed high school diploma yes no 
+				answers.setAnswer7(parts[6]); // Exersice // All 7 days Between 4 ­ 6 days Between 2 ­ 4 days  Never 
+				answers.setAnswer8(parts[7]);  // hhealthy food  // Between 75 % ­ 100 % Between 50 % ­ 75%  Between 25% ­ 50% Less than 25%
+				answers.setAnswer9(parts[8]); //Smoking Between 75 % ­ 100 % Between 50 % ­ 75% Between 25% ­ 50% Less than 25%
+				answers.setAnswer10(parts[9]); 	// Health Insurance Yes nO
 				System.out.println("Controller - Answer1 from object: "+answers.getAnswer1());
 				
 				DbConnection dbcon = new DbConnection();
 				boolean res = dbcon.recordUserAnswers(answers);
+				Recos recos = dbcon.showRecos(answers);
+				System.out.println("recos fruits" + recos.getFruits());
+				Recot recot = dbcon.showRecot(answers);
+				System.out.println("recot popl density" + recot.getPopulation_Density());
+				Recou recou = dbcon.showRecou(answers);
+				System.out.println("recou unhealthy days" + recou.getUnhealthy_Days());
+				String exerciseReco = "", weightReco ="", foodReco="", smokingReco="", toxicReco="", cancerReco="";
+				
+				if (recou.getB_BI_Cancer() > 30 ||  recou.getB_Hi_Cancer() > 30 ||
+						recou.getB_Ot_Cancer() > 30 ||	recou.getB_Wh_Cancer() > 30 ||
+						recou.getC_BI_Cancer() > 30 ||	recou.getC_Hi_Cancer() > 30 ||
+						recou.getC_Ot_Cancer() > 30 ||  recou.getC_Wh_Cancer() > 30 ||
+						recou.getD_BI_Cancer() > 30 ||	recou.getD_Hi_Cancer() > 30 ||
+						recou.getD_Ot_Cancer() > 30 ||  recou.getD_Wh_Cancer() > 30 ||
+						recou.getE_BI_Cancer() > 30 || recou.getE_Hi_Cancer() > 30 ||
+						recou.getE_Ot_Cancer() > 30 ||  recou.getE_Wh_Cancer() > 30 )
+				cancerReco = "People of your age range are at high risk of cancer!!";
+				session.setAttribute("cancerReco", cancerReco);
+
+				
+				if (parts[7].equals("Less than 25%"))
+					foodReco = "Please consider having healthy food!! Good for you!!";
+				else
+					foodReco = "You seems to be good with diet!! Be consistent!!";
+				session.setAttribute("foodReco", foodReco);
+				
+				if (parts[4].equals("More than 100kg"))
+					weightReco = "Please consider doing exerice more often!! Your weight might create you a problem!!";
+				else
+					weightReco = "You seems to be fit!! Be consistent!!";
+				session.setAttribute("weightReco", weightReco);
+				
+				if (parts[6].equals("never"))
+					exerciseReco = "Please consider doing exerice more often!! Good for you!!";
+				else
+					exerciseReco = "You are doing great with exercise!! Be consistent!!";
+				session.setAttribute("exerciseReco", exerciseReco);
+				
+				if (parts[8].equals("Between 75 % ­ 100 %"))
+					smokingReco = "You might be at high risk of Lung Cancer!! Please be careful and control smoking!!";
+				else
+					smokingReco = "Good that you smoke less!! Keep it up!!";
+				session.setAttribute("smokingReco", smokingReco);
+				
+				if(recot.getToxic_Chem() > 20000)
+					toxicReco = "You may be prone to toxic chemicals in your surrounding!!";
+				else
+					toxicReco = "You live in healthy air!!";
+				session.setAttribute("toxicReco", toxicReco);
+				
+				/*ArrayList<String> quotes = Config.getListOfQuotes();
+		        Random randomGenerator =  new Random();
+		        int index = randomGenerator.nextInt(quotes.size());
+		        String quote1 = quotes.get(index);
+		        session.setAttribute("quote1", quote1);
+		        index = randomGenerator.nextInt(quotes.size());
+		        String quote2 = quotes.get(index);
+		        session.setAttribute("quote2", quote2);
+		        index = randomGenerator.nextInt(quotes.size());
+		        String quote3 = quotes.get(index);
+		        session.setAttribute("quote3", quote3);*/
+		        
 				if(res)
 				{
 				output = "Answers added successfully to system";
-				System.out.println("Controller message: User was successfully added to db");
+				System.out.println("Controller message: Answers added successfully to system");
 				
 				}
 				 Reco reco = dbcon.showReco(user);

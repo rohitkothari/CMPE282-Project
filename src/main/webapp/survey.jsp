@@ -62,7 +62,7 @@ $(document).ready(function () {
 		    type: "POST",
 		    data : "s=" + s,
 		    success:function(data, textStatus, jqXHR){
-		    	alert("success");
+		    	//alert("success");
 		    	window.location.href="home.jsp";
 		    },
 		    error: function(jqXHR, textStatus, errorThrown){

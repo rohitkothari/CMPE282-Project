@@ -71,41 +71,47 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 							<table cellpadding="5px">
 							<!--Body content-->
 							
-								<td><h5>Recommendation 1: </h5></td>
+								<td><h5></h5></td>
 								<td></td>
-								<td><span><c:out value="${reco1}"></c:out></span></td>
+								<td><span><c:out value="${cancerReco}"></c:out></span></td>
 								<%-- <td><span>${project.title}</span></td> --%>
 							</tr>
 							<tr></tr>
 							<tr>
-							<%
-								if (session.getAttribute("test") == null) {}
-							%>
-								<td><h5>Recommendation 2</h5></td>
+							
+								<td><h5></h5></td>
 								<td></td>
-								<td><span></span></td>
+								<td><span><c:out value="${foodReco}"></c:out></span></td>
 								<%-- <td><span>${project.description}</span></td> --%>
 							</tr>
 							<tr></tr>
 							<tr>
-								<td><h5>Recommendation 3</h5></td>
+								<td><h5></h5></td>
 								<td></td>
-								<td><span></span></td>
+								<td><span><c:out value="${weightReco}"></c:out></span></td>
 								<%-- <td><span>${project.domain}</span></td> --%>
 							</tr>
 							<tr></tr>
 							<tr>
-								<td><h5>Recommendation 4</h5></td>
+								<td><h5></h5></td>
 								<td></td>
-								<td><span>Try 4</span></td>
+								<td><span><c:out value="${exerciseReco}"></c:out></span></td>
 								<%-- <td><span>${project.developerName}</span></td> --%>
 							</tr>
 
 							<tr></tr>
 							<tr>
-								<td><h5>Recommendation 5</h5></td>
+								<td><h5></h5></td>
 								<td></td>
-								<td><span>Try 5</span></td>
+								<td><span><c:out value="${smokingReco}"></c:out></span></td>
+								<%-- <td><span>${project.testerName}</span></td> --%>
+							</tr>
+							
+							<tr></tr>
+							<tr>
+								<td><h5></h5></td>
+								<td></td>
+								<td><span><c:out value="${toxicReco}"></c:out></span></td>
 								<%-- <td><span>${project.testerName}</span></td> --%>
 							</tr>
 							

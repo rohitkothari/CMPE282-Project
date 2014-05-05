@@ -47,7 +47,7 @@ function userLogin(){
 		    data : "email=" + email + "&password=" + password,
 		   
 		    success:function(data, textStatus, jqXHR){
-		    	alert('login success');
+		    	//alert('login success');
 		    	window.location.href="home.jsp";
 		    },
 		    error: function(jqXHR, textStatus, errorThrown){
