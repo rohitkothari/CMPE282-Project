@@ -118,7 +118,7 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 				<div id="sidebar" class="span2" style="margin: 35px 10px 0px 20px; padding: 20px 1100px 50px 0px; background-color: ghostwhite;">
 					<!--Sidebar content-->
 					<ul id="sidebar-list" class="nav nav-list">
-						<li class="nav-header" style="font-size: 15px;">User Menu</li>
+						<li class="nav-header" style="font-size: 15px;"><span style="color: #428bca;"><h4>User Menu</h4></span></li>
 						<li class="active" style="font-size: 15px;"><a href="#ViewMyProjects"
 							data-toggle="tab">Show Profile</a></li>
 						<li style="font-size: 15px;"><a href="#PostNewProject" data-toggle="tab">Show Recommendations</a></li>
@@ -135,7 +135,7 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 							
 								<td><h5>Recommendation 1</h5></td>
 								<td></td>
-								<td><span>Try 1</span></td>
+								<td><span><c:out value="${it.reco}"></c:out></span></td>
 								<%-- <td><span>${project.title}</span></td> --%>
 							</tr>
 							<tr></tr>
@@ -178,38 +178,38 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 							<table>
 						
 							<tr>
-								<td><h5>Username:</h5></td>
+								<td><h4>Username:</h4></td>
 								<td></td>
 								<td><span style="margin-left: 10px;"> <c:out value="${it.user}"></c:out></span></td>
 							</tr>
 							<tr></tr>
 							<tr>
-								<td><h5>First Name:</h5></td>
+								<td><h4>First Name:</h4></td>
 								<td></td>
 								<td><span style="margin-left: 10px;"> <c:out value="${it.firstname}"></c:out></span></td>
 							</tr>
 							<tr></tr>
 							<tr>
-								<td><h5>Last Name:</h5></td>
+								<td><h4>Last Name:</h4></td>
 								<td></td>
 								<td><span style="margin-left: 10px;"> <c:out value="${it.lastname}"></c:out></span></td>
 							</tr>
 							<tr></tr>
 														
 							<tr>
-								<td><h5>Address:</h5></td>
+								<td><h4>Address:</h4></td>
 								<td></td>
 								<td><span style="margin-left: 10px;"> <c:out value="${it.address}"></c:out></span></td>
 							</tr>
 							<tr></tr>
 							<tr>
-								<td><h5>Pin:</h5></td>
+								<td><h4>Pin:</h4></td>
 								<td></td>
 								<td><span style="margin-left: 10px;"><c:out value="${it.pin}"></c:out></span></td>
 							</tr>
 							<tr></tr>
 							<tr>
-								<td><h5>Mobile:</h5></td>
+								<td><h4>Mobile:</h4></td>
 								<td></td>
 								<td><span style="margin-left: 10px;"><c:out value="${it.mobile}"></c:out></span></td>
 							</tr>

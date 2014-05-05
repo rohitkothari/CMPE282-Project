@@ -8,7 +8,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>DiaB-Reco! - Login</title>
+<title>CanceReco! - Login</title>
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,11 +35,11 @@
 <script type="text/javascript">
 
 function userLogin(){
-	 alert('inside Login page');
+	 //alert('inside Login page');
 	   var email = $('#email').val();
 	   var password = $('#password').val();
 	 
-	 alert('Username : '+email);
+	 //alert('Username : '+email);
 	   
 		$.ajax({
 			url : "rest/MainController/login",
@@ -86,27 +86,29 @@ function EmailVerify() {
 		<div class="container-fluid">
 			<div id="loginOptions" style="margin: 80px 0px 0px 40px;">
 				<div></div>
-				<div class="span5" style="margin-right: 700px;">
+				<div class="span5" style="margin-right: 350px; margin-left: 300px;">
 					<div
 						style="background-color: ghostwhite; -webkit-box-shadow: 3px 0px 5px #888888; -moz-box-shadow: 3px 0px 5px #888888; box-shadow: 3px 0px 5px #888888; padding: 30px;">
 						<h3>Sign In</h3>
 						<table>
 							<tr>
 								<td><label for="inputEmail3" class="col-sm-2 control-label">Email</label></td>
-								<td><div class="col-sm-10">
+								<td><div class="col-sm-50">
 										<input type="email" class="form-control" id="email"
 											placeholder="Your registered email"  onChange="EmailVerify();">
 									</div></td>
 							</tr>
 							<tr>
 								<td><label for="inputPassword3" class="col-sm-2 control-label">Password</label></td>
-								<td><div class="col-sm-10"> <input type="password" class="form-control" id="password"
+								<td><div class="col-sm-50"> <input type="password" class="form-control" id="password"
 											placeholder="Password">
 									</div></td>
 							</tr>
+							<tr></tr>
+							
 							<tr>
 								<td></td>
-								<td><div class="col-sm-offset-2 col-sm-10">
+								<td><div class="col-sm-offset-0 col-sm-10">
 										<button type="submit" class="btn btn-primary" style= "margin-left:45px" id="login"  onclick="userLogin()">Login</button>
 									</div></td>
 							</tr>

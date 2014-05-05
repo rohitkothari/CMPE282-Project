@@ -5,10 +5,10 @@
 <%@ page isELIgnored="false" %>
 <div id="footer">
 	<div class="navbar navbar-inverse navbar-fixed-bottom">
-		<div class="navbar-inner" style="min-height: 70px;">
-				<div style="margin:10px 5px 10px 5px; float:left;"><span style="color: white;">Copyright &copy; DiaB-Reco!</span></div>
+		<div class="navbar-inner" style="min-height: 30px;">
+				<div style="margin:10px 5px 10px 5px; float:left;"><span style="color: white;">Copyright &copy; CanceReco!</span></div>
 				<div style="margin:10px 10px 10px 10px; float: right;">
-					<a href="./about.jsp" style="color: white;">About Us</a> <span style="color: white;">|</span> <a href="#" style="color: white;">Contact Us</a>
+					<a href="./about.jsp" style="color: white;">About Us</a>
 				</div>
 		</div>
 	</div>

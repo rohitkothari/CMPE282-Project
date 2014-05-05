@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>DiaB-Reco! - Register</title>
+<title>CanceReco! - Register</title>
 
 <%@include file="includes.jsp" %>
 
@@ -63,27 +63,23 @@ $(document).ready(function () {
 </script>
 <%@include file="header.jsp"%>
 </head>
-<body bgcolor = "PowderBlue">
+<body>
 	
-	<div id="container" align="center" style="padding-top: 40px;">
+	<div id="container" align="center">
 		<div class="container-fluid">
-			<div class="row-fluid">
-				<!-- <div id="sidebar" class="span2">
-						Sidebar content
-					<ul id="sidebar-list" class="nav nav-list">
-					</ul>
-				</div> -->
-					<div class="tab-content">
-						<div class="tab-pane active" id="NewUserSignUp">
+			<div id="loginOptions" style="margin: 80px 0px 0px 40px;">
+				<div></div>
+				<div class="span5" style="margin-right: 350px; margin-left: 300px;">
+					<div
+						style="background-color: ghostwhite; -webkit-box-shadow: 3px 0px 5px #888888; -moz-box-shadow: 3px 0px 5px #888888; box-shadow: 3px 0px 5px #888888; padding: 30px;">
+						<h3>Register Here</h3>
 								<table cellpadding="5px">
 								<!--Body content-->
-								<tr>
-  									<h2>Create an account here</h2>
-								</tr>
+								
 								<tr>
 									<td><h5>First Name</h5></td>
 									<td></td>
-									<td><div class="input-group">
+									<td><div class="col-sm-30">
 											<input type="text" id="firstNameInput" class="required" placeholder="First Name">
 										</div></td>
 								</tr>
@@ -91,7 +87,7 @@ $(document).ready(function () {
 								<tr>
 									<td><h5>Last Name</h5></td>
 									<td></td>
-									<td><div class="input-group">
+									<td><div class="col-sm-30">
 											<input type="text" id="lastNameInput" class="required" placeholder="Last Name">
 										</div></td>
 								</tr>
@@ -149,7 +145,7 @@ $(document).ready(function () {
 									<td></td>
 									<td></td>
 									<td><div class="col-sm-offset-2 col-sm-10">
-									<input type="submit" class="btn btn-default" id="signup" value="Sign Up"/>
+									<input type="submit" class="btn btn-primary" id="signup" value="Sign Up"/>
 								</div></td>
 								</tr>
 							</table>

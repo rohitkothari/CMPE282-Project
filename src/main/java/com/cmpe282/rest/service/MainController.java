@@ -20,7 +20,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.cmpe282.rest.dao.DbConnection;
+import com.cmpe282.rest.domain.Reco;
 import com.cmpe282.rest.domain.User;
+import com.cmpe282.rest.domain.UserAnswer;
 import com.sun.jersey.api.view.Viewable;
 //HelloWorldREST.java
 
@@ -117,6 +119,10 @@ public class MainController {
 	        map.put("mobile", Integer.toString(user.getMobile()));
 	        List<String> l = new ArrayList<String>();
 	       
+	        Reco reco = dbcon.showReco(username);
+	        System.out.println("Inside Controller - user/reco trial");
+	        map.put("reco", reco.getReco());
+	        
 	        l.add(user.getUsername());
 	        l.add(user.getFirstName());
 	        l.add(user.getLastName());
@@ -124,19 +130,79 @@ public class MainController {
 	        //l.add(user.getPin());
 	        map.put("items", l);
 	        
-	       
-			
-	        return Response.ok(new Viewable("/jsp/NewProfile", map)).build();
-	        
-	        
+	        return Response.ok(new Viewable("/jsp/NewProfile", map)).build();	        
 	    }
+		@GET
+		@Path("/user/reco")
+		 public Response showReco(@Context HttpServletRequest req) {
+				HttpSession session= req.getSession(false);
+				 String username = (String) session.getAttribute("username");
+			        DbConnection dbcon = new DbConnection();
+			        Reco reco = dbcon.showReco(username);
+					
+				System.out.println("Checking username got from session- " +username);
+				Map<String, Object> map = new HashMap<String, Object>();
+		        System.out.println("Inside Controller - user/reco trial");
+		        map.put("reco", reco.getReco());
+		        		       		        
+		        return Response.ok(new Viewable("/jsp/NewProfile", map)).build();	        
+		    }
+		   
+		@POST 
+		@Path("/reco")
+		public Response recordUserAnswers(@FormParam("s") String s,
+				@Context HttpServletRequest req){ 
+				HttpSession session= req.getSession(false);
+				String user = (String) session.getAttribute("username");
+				UserAnswer answers = new UserAnswer();
+				answers.setUser(user);
+				String output = "";
+				//System.out.println("Inside Controller - Posting user's answers - county: "+county);
+				System.out.println("s: "+ s);
+				s = s.replace("zzz", "$");
+				
+				s = s.replace("yyy","-");
+				s = s.replace("qqq","/");
+				s = s.replace("ppp","%");
+				System.out.println("new s: "+ s);
+				
+				String[] parts = s.split(",");
+				for(int i=0;i<10;i++){
+					System.out.println("part " +i+ " - " +parts[i]);	
+				}
+				answers.setAnswer1(parts[0]);
+				answers.setAnswer2(parts[1]);
+				answers.setAnswer3(parts[2]);
+				answers.setAnswer4(parts[3]);
+				answers.setAnswer5(parts[4]);
+				answers.setAnswer6(parts[5]);
+				answers.setAnswer7(parts[6]);
+				answers.setAnswer8(parts[7]);
+				answers.setAnswer9(parts[8]);
+				answers.setAnswer10(parts[9]);
+				
+				System.out.println("Controller - Answer1 from object: "+answers.getAnswer1());
+				
+				DbConnection dbcon = new DbConnection();
+				boolean res = dbcon.recordUserAnswers(answers);
+				if(res)
+				{
+				output = "Answers added successfully to system";
+				System.out.println("Controller message: User was successfully added to db");
+				
+				}
+				return Response.status(200).entity(output).build();
+
+		}
+		
 		
 		@GET
 		@Path("/logout")
 		public Response logout(@Context HttpServletRequest req) {
 			HttpSession session= req.getSession(false);
+			System.out.println("Inside Controller - testing logout functionality");
 			session.invalidate();
-			return Response.ok(new Viewable("./home")).build();
+			return Response.ok(new Viewable("/jsp/index")).build();
 		}
 	
 /*	@GET 
