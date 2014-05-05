@@ -101,7 +101,7 @@ public class MainController {
 	}
 	
 		@GET
-		@Path("/user/profile")
+		@Path("profile")
 		
 	    public Response showUserProfile(@Context HttpServletRequest req) {
 			HttpSession session= req.getSession(false);

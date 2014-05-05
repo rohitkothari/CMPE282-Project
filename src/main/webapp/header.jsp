@@ -44,7 +44,7 @@
  					</c:choose> --%>
 					
 					<ul class="dropdown-menu">
-				      <li><a href="/cmpe282-project/rest/MainController/user/profile">Profile</a></li>
+				      <li><a href="/cmpe282-project/rest/MainController/profile">Profile</a></li>
 				      <li><a href="/cmpe282-project/rest/MainController/logout">Logout</a></li>
 				    </ul>
 			    </li>
