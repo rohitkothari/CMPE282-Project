@@ -25,69 +25,7 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 
 </script>
 
-<script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
-						$('#submitProject')
-								.click(
-										function(event) {
 
-											var projectTitle = $(
-													'#ProjectTitleInput').val();
-											var domain = $('#DomainInput')
-													.val();
-											var description = $(
-													'#DescriptionInput').val();
-											var projectURL = $(
-											'#ProjectURLInput').val();
-											var minBudget = $(
-											'#MiniBudgetInput').val();
-											var maxBudget = $(
-											'#MaxBudgetInput').val();
-											var projectSkills = $(
-											'#ProjectSkillsInput').val();
-											var projectUsers = $(
-											'#ProjectUsersInput').val();
-
-											$
-													.ajax({
-														url : "project.htm",
-														type : "POST",
-														data : "projectTitle="
-																+ projectTitle
-																+ "&domain="
-																+ domain
-																+ "&description="
-																+ description
-																+ "&projectURL="
-																+ projectURL
-																+ "&minBudget="
-																+ minBudget
-																+ "&maxBudget="
-																+ maxBudget
-																+ "&projectSkills="
-																+ projectSkills
-																+ "&projectUsers="
-																+ projectUsers,
-																
-														success : function(
-																data,
-																textStatus,
-																jqXHR) {
-															window.location.href = "viewProjects.htm";
-														},
-														error : function(jqXHR,
-																textStatus,
-																errorThrown) {
-															alert("Could not process request.. "
-																	+ errorThrown);
-														}
-													});
-										});
-					});
-	
-</script>
 
 <style type="text/css">
 #sidebar-list {
@@ -129,27 +67,30 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 					<div class="tab-content">
 						<div class="tab-pane" id="PostNewProject" align="center">
 							
-							<h3>Wow! Cool Recommendations!</h3> 
+							<h3>Your Recommendations!</h3> 
 							<table cellpadding="5px">
 							<!--Body content-->
 							
-								<td><h5>Recommendation 1</h5></td>
+								<td><h5>Recommendation 1: </h5></td>
 								<td></td>
-								<td><span><c:out value="${it.reco}"></c:out></span></td>
+								<td><span><c:out value="${reco1}"></c:out></span></td>
 								<%-- <td><span>${project.title}</span></td> --%>
 							</tr>
 							<tr></tr>
 							<tr>
+							<%
+								if (session.getAttribute("test") == null) {}
+							%>
 								<td><h5>Recommendation 2</h5></td>
 								<td></td>
-								<td><span>Try 2</span></td>
+								<td><span></span></td>
 								<%-- <td><span>${project.description}</span></td> --%>
 							</tr>
 							<tr></tr>
 							<tr>
 								<td><h5>Recommendation 3</h5></td>
 								<td></td>
-								<td><span>Try 3</span></td>
+								<td><span></span></td>
 								<%-- <td><span>${project.domain}</span></td> --%>
 							</tr>
 							<tr></tr>
@@ -180,38 +121,38 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 							<tr>
 								<td><h4>Username:</h4></td>
 								<td></td>
-								<td><span style="margin-left: 10px;"> <c:out value="${it.user}"></c:out></span></td>
+								<td><span style="margin-left: 10px;"> <c:out value="${username}"></c:out></span></td>
 							</tr>
 							<tr></tr>
 							<tr>
 								<td><h4>First Name:</h4></td>
 								<td></td>
-								<td><span style="margin-left: 10px;"> <c:out value="${it.firstname}"></c:out></span></td>
+								<td><span style="margin-left: 10px;"> <c:out value="${firstname}"></c:out></span></td>
 							</tr>
 							<tr></tr>
 							<tr>
 								<td><h4>Last Name:</h4></td>
 								<td></td>
-								<td><span style="margin-left: 10px;"> <c:out value="${it.lastname}"></c:out></span></td>
+								<td><span style="margin-left: 10px;"> <c:out value="${lastname}"></c:out></span></td>
 							</tr>
 							<tr></tr>
 														
 							<tr>
 								<td><h4>Address:</h4></td>
 								<td></td>
-								<td><span style="margin-left: 10px;"> <c:out value="${it.address}"></c:out></span></td>
+								<td><span style="margin-left: 10px;"> <c:out value="${address}"></c:out></span></td>
 							</tr>
 							<tr></tr>
 							<tr>
 								<td><h4>Pin:</h4></td>
 								<td></td>
-								<td><span style="margin-left: 10px;"><c:out value="${it.pin}"></c:out></span></td>
+								<td><span style="margin-left: 10px;"><c:out value="${pin}"></c:out></span></td>
 							</tr>
 							<tr></tr>
 							<tr>
 								<td><h4>Mobile:</h4></td>
 								<td></td>
-								<td><span style="margin-left: 10px;"><c:out value="${it.mobile}"></c:out></span></td>
+								<td><span style="margin-left: 10px;"><c:out value="${mobile}"></c:out></span></td>
 							</tr>
 							<tr></tr>
 							

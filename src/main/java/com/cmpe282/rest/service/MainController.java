@@ -51,6 +51,14 @@ public class MainController {
 			{
 				HttpSession session= req.getSession(true);
 				session.setAttribute("username", email);
+				
+				User user = dbcon.showUserProfile(email);
+				session.setAttribute("firstname", user.getFirstName());
+				session.setAttribute("lastname", user.getLastName());
+				session.setAttribute("address", user.getAddress());
+				session.setAttribute("pin", user.getPin());
+				session.setAttribute("mobile", user.getMobile());
+				
 				session.setAttribute("sessionId", session.getId());
 				output = "Login Successful for "+ email;
 				
@@ -191,6 +199,9 @@ public class MainController {
 				System.out.println("Controller message: User was successfully added to db");
 				
 				}
+				 Reco reco = dbcon.showReco(user);
+				session.setAttribute("reco1", reco.getReco());
+				
 				return Response.status(200).entity(output).build();
 
 		}

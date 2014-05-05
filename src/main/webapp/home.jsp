@@ -26,7 +26,7 @@
 				<form action ="survey.jsp" method= "GET">
 					<input type = "Submit" class="btn btn-primary" Value = "Click me for Survey"/>
 				</form>
-				<form action ="/cmpe282-project/rest/MainController/profile" method= "GET">
+				<form action ="NewProfile.jsp" method= "GET">
 					<input type = "Submit" class="btn btn-primary" Value = "Profile"/>
 				</form>
 				<p style="font-size: 15px;">*Recommendations regarding Cancer</p>

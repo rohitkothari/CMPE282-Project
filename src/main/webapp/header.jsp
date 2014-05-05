@@ -19,7 +19,7 @@
 <div id="header">
 	<div class="navbar navbar-inverse navbar-static-top">
 		<div id="headerNav" class="navbar-inner">
-			<a class="brand" href="/cmpe282-project/"><span style="color: green; margin: 0px 10px 0px 10px; font-size:60px ;">CanceReco!<span style="color: red;"></span></span></a>
+			<a class="brand" href="index.jsp"><span style="color: green; margin: 0px 10px 0px 10px; font-size:60px ;">CanceReco!<span style="color: red;"></span></span></a>
 			<% if(session.getAttribute("user") != null) { %>
 			<ul class="nav">
 				<li><a href="/project-vars/viewProjects.htm" style="color: white;"><h1>View Projects</h1></a></li>
@@ -44,7 +44,7 @@
  					</c:choose> --%>
 					
 					<ul class="dropdown-menu">
-				      <li><a href="/cmpe282-project/rest/MainController/profile">Profile</a></li>
+				      <li><a href="NewProfile.jsp">Profile</a></li>
 				      <li><a href="/cmpe282-project/rest/MainController/logout">Logout</a></li>
 				    </ul>
 			    </li>
